@@ -1,52 +1,75 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Race Timetable</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Work in Progress</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: #252c38;
+      font-family: 'Montserrat', sans-serif;
+      color: #fff;
+      text-transform: uppercase;
+      text-align: center;
+      gap: 1.5rem;
+    }
 
-  <!-- Montserrat Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    .container {
+      background: #1e2531;
+      padding: 3rem 2rem;
+      border-radius: 16px;
+    }
 
-  <!-- Main Styles -->
-  <link rel="stylesheet" href="style.css" />
+    h1 {
+      color: #ffcc00;
+      font-weight: 400;
+      font-size: clamp(48px, 10vw, 100px);
+      margin: 0 0 2rem 0;
+    }
+
+    p {
+      color: #84949c;
+      font-weight: 700;
+      font-size: 1.0rem;
+      white-space: pre-line;
+      margin: 0;
+    }
+
+    .datetime-container {
+      background: #1e2531;
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      color: #84949c;
+      font-weight: 400;
+      font-size: 0.77rem;
+    }
+  </style>
 </head>
-
 <body>
-  <!-- ===========================
-       🏁 HEADER
-  ============================ -->
-  <header>
-    <div class="logo">
-      <img src="logo.svg" alt="Iron Lynx Logo" class="logo-img">
-    </div>
+  <div class="container">
+    <h1>WORK IN PROGRESS</h1>
+    <p>WE'RE WORKING ON SOMETHING AWESOME — CHECK BACK SOON!</p>
+  </div>
 
-    <div class="header-title">2025 FIA WEC - Bahrain</div>
+  <div class="datetime-container" id="datetime"></div>
 
-    <!-- Current Date + Time -->
-    <div id="current-datetime" onclick="window.location.href='schedule.html'" style="cursor: pointer;">
-      <div class="date-line">Loading…</div>
-      <div class="time-line">--:--:--</div>
-    </div>
-  </header>
-
-  <!-- ===========================
-       🧱 MAIN LAYOUT
-  ============================ -->
-  <main>
-    <!-- MAIN EVENTS SECTION -->
-    <div id="main-events" class="events-section"></div>
-
-    <!-- SECONDARY EVENTS SECTION -->
-    <div id="secondary-events" class="events-section"></div>
-
-    <!-- TERTIARY EVENTS SECTION -->
-    <div id="tertiary-events" class="events-section"></div>
-  </main>
-
-  <!-- ===========================
-       ⚙️ SCRIPT
-  ============================ -->
-  <script src="script.js"></script>
+  <script>
+    function updateDateTime() {
+      const now = new Date();
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      const date = now.toLocaleDateString('en-GB', options);
+      const time = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+      document.getElementById('datetime').textContent = `${date} — ${time}`.toUpperCase();
+    }
+    updateDateTime();
+    setInterval(updateDateTime, 1000);
+  </script>
 </body>
 </html>
